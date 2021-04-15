@@ -1,0 +1,50 @@
+CODIGO: Fue realizado con wollok ya que es un lenguaje de objetos que ya conociamos
+
+---------------------------
+Requerimentos:
+	-Dar respuesta al precio de una prenda
+	-Dar respuesta al tipo de una prenda
+	-Poder calcular los diferentes precios de las prendas segun su estado
+	-Guardar informacion sobre una venta, teniendo en cuenta las prendas vendidas, junto con sus tipos, cantidades, precio, fecha y metodo de pago.
+	-Consultar las ganancias de una determinada fecha
+	-Poder calcular el monto final de una venta dependiendo del metodo de pago
+	
+	
+----------------------------
+
+prosa:
+	-No es muy claro el primer requerimento. Cuando se refiere a "sus tipos" respecto de una prenda, esta hablando que una prenda puede ser de mas de un tipo?? querra decir que se deberia mostrar el tipo de dicha prenda?? o tipos similares de prendas para que el usuario pueda ver alternativas??
+	edit: Se supuso que cada prenda tiene un tipo, y que el usuario va a poder saber el tipo de una determinada prenda
+	 
+	-Suponiendo que se quiere mostrar tipos similares, no se sabe con claridad si deberian mostrarlos juntos, o son funcionalidades separadas. Un aproximamiento seria que el usuario final seleccione una prenda, el sistema le muestra el valor de dicha prenda, y ademas le sugiera otros modelos/marcas de dicha prenda. Tambien lo podriamos tomar como funcionalidades individuales. Es decir, si el usuario final selecciona una prenda, el mismo tendria la opcion de ver el valor de la prenda o poder ver modelos/marcas similares.
+	edit: Se modelo tal que se pueda consultar su precio y tipo de forma separada.
+
+	-El precio depende del estado de la prenda, por lo que se debe conocer previamente el estado paradar un precio
+	 
+	-Hay que tener en cuenta que el valor de la promocion lo elije el usuario (vendedor)
+
+	-Se requiere saber las ventas que se hicieron de un determinado dia. Se podria guardar la fecha  de venta, con el precio de publicacion de dicho dia (que seria el mismo de la fecha).
+
+	-Cuando se venda una prenda, se calcula el precio en dicho momento y se guarda junto con la fecha de venta, el tipo, cantidad de cada tipo y metodo de pago (por ahora no se necesitaria mas info). Calcular el precio en el momento serviria para guardar el valor exacto que se tendria en el momento de la fecha, ya que calcular el valor de una prenda en un momento posterior puede ser otro, ya que depende del estado actual de dicha prenda. Todo esto pensando que se tienen muchas cantidades de un determinado tipo de prenda, con un mismo estado. (ya que si seria solo una unidad dejaria de existir, lo cual no seria un problema guardando el precio con el razonamiento anterior)
+	
+	-No hay detalles sobre que pasa con el recargo, si forma parte de las ganancias o hacia donde va ese monto extra. Porque dependeria de la forma en la que tratariamos las ganancias de un determinado dia. Ya que si el recargo es parte de las ganancias, entonces se sumaria, pero en caso contrario no deberiamos tenerlo en cuenta.
+	edit: para las ganancias no se tuvo en cuenta la recarga, se supuso que iba destinado a un tercero 
+	
+	-En caso que sume el recargo en las ganancias mensuales, al calcular el precio final de la prenda para su cobro/guardado tambien se tiene que tener en cuenta el metodo de pago.
+	
+prosa fail:	
+	
+	-Cuando se vende una prenda, se va a guardar la prenda sin poder modificarlo, esto es para que no cambie de valor. (al final se decidio guardar las ventas de otra forma)
+	
+	
+---------------
+Cambios de Diseño:
+
+	-tenia pensado hacer una clase "VentaPorPrenda" que sea conocida por "Venta" y que represente la cantidad de unidades que se compro sobre una prenda, pero tambien se podria representar todo en la clase "Venta", podria sacar la cantidad haciendo un prendasVendidas.filter.length y listo.
+	
+	-cree una interface "TipoDePrenda", la cual era conocida por la clase "Prenda" y de ahi cada tipo de prenda heredaba, pero al final deberian heredar directamente de la prenda, ya que son justamente eso, y de esa forma posee todos sus atributos y metodos
+	
+---------------	
+
+
+
