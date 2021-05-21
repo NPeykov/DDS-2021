@@ -1,26 +1,24 @@
-public class QueMePongo{
-    List<Atuendo> atuendos;
-    Usuario usuario;
-    /*
-      en realidad tendria que poder mostrarle de alguna forma.
-      Usuario es una abstraccion de algo a lo que le puedo mostrar la prenda generada.
-      Tambien puede ser que tenga que mostrar la prenda por pantalla y no enviarsela a una clase Usuario.
-      Hay que ver en un futuro si el usuario va a tener mas comportamientos.
-     */
-    
-    public void sugerirUniforme(Usuario usuario){
-	Atuendo unUniforme = this.generarUniforme();
-	usuario.recibirSugerencia(unUniforme);
-    }
-
-    public Atuendo generarUniforme(){
-	//genera uniforme
-    }
+class Guardarropa{
+	public Atuendo sugerirAtuendo(prendas){
+		//TODO
+	}
+	
 }
+
+class GeneradorDeAtuendos{
+	//tipoClase servicioClima;
+	
+	public void setServicioClima(servicio){
+		servicioClima = servicio;
+	}
+	
+}
+
 
 
 public class Atuendo{
     List<Prenda> prendas;
+	
 }
 
 public class Prenda{
