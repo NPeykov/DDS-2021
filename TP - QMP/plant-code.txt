@@ -34,6 +34,13 @@ interface AccuWeatherAPI{
  List<Map<String,Object>> getWeather(String city)
 }
 class PrendaBuilder
+class WeatherService{
+  getClima(city)
+}
+class AccuWeatherAdapter{
+  getClima(city)
+}
+
 
 
 Atuendo -->"*" Prenda
@@ -41,7 +48,9 @@ Prenda --> TipoPrenda
 TipoPrenda --> Categoria
 Prenda --> Material
 Prenda -->"1|2" Color
-GeneradorDeAtuendos --> AccuWeatherAPI
+GeneradorDeAtuendos --> WeatherService
+WeatherService <|-- AccuWeatherAdapter 
+AccuWeatherAdapter --> AccuWeatherAPI
 Guardarropa --> GeneradorDeAtuendos
 Guardarropa -->"*" Prenda
 PrendaBuilder ..> Prenda
