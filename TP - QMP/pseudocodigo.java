@@ -1,19 +1,45 @@
 class Guardarropa{
-	public Atuendo sugerirAtuendo(prendas){
-		//TODO
-	}
+    public Atuendo sugerirAtuendo(prendas){
+	//TODO
+    }
 	
 }
 
 class GeneradorDeAtuendos{
-	//tipoClase servicioClima;
-	
-	public void setServicioClima(servicio){
-		servicioClima = servicio;
-	}
+    WeatherService servicioClima;
+
+
+    //aca se podria setear cualquier otro servicio
+    //pero se tendria que crear un adapter dependiendo de la interface del servicio
+    public void setServicioClima(servicio){
+	servicioClima = servicio;
+    }
 	
 }
 
+public interface WeatherService{
+
+    //esto seria una interface compatible con nuestro sistema
+    //dependiendo del servicio que tengamos, tenemos que adaptar
+    //esta interface que deseamos utilizar con la interface
+    //que nos brinda el servicio
+    public float getClima(ciudad);
+	
+    
+}
+
+public class AccuWeatherAdapter extends WeatherService{
+    AccuWeatherAPI servicio;//SERVICIO EXTERNO, NO SE MODELA COMPORTAMIENTO
+
+    //en realidad AccuWeatherAPI no retorna un float
+    //pero podriamos convertirlo a una unidad deseada
+    //puse float como ejemplo, pero podria ser otro tipo
+    @Override
+    public float getClima(ciudad){
+	servicio.getWeather(ciudad);
+    }
+    
+}
 
 
 public class Atuendo{
