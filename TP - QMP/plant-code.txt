@@ -1,0 +1,49 @@
+@startuml
+class Guardarropa{
+  sugerirAtuendo(prendas)
+}
+class Atuendo
+class Prenda{
+  getTemperaturaMaxima()
+}
+enum Material{
+  MATERIAL1
+  MATERIAL2
+  ...
+}
+class TipoPrenda
+enum Categoria{
+  PARTE_SUPERIOR
+  CALZADO
+  PARTE_INFERIOR
+  ACCESORIO
+}
+
+enum Trama{
+ LISA
+ RAYADA
+ CON_LUNARES
+ CUADROS
+ ESTAMPADO
+}
+class Color
+class GeneradorDeAtuendos{
+  setWeatherService(service)
+}
+interface AccuWeatherAPI{
+ List<Map<String,Object>> getWeather(String city)
+}
+class PrendaBuilder
+
+
+Atuendo -->"*" Prenda
+Prenda --> TipoPrenda
+TipoPrenda --> Categoria
+Prenda --> Material
+Prenda -->"1|2" Color
+GeneradorDeAtuendos --> AccuWeatherAPI
+Guardarropa --> GeneradorDeAtuendos
+Guardarropa -->"*" Prenda
+PrendaBuilder ..> Prenda
+Prenda --> Trama
+@enduml
